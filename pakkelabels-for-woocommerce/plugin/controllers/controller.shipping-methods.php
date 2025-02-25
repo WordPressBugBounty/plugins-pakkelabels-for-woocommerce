@@ -4,6 +4,7 @@ use ShipmondoForWooCommerce\Plugin\Plugin;
 use ShipmondoForWooCommerce\Plugin\ShippingMethods\Shipmondo;
 use ShipmondoForWooCommerce\Lib\Abstracts\Controller;
 use ShipmondoForWooCommerce\Lib\Tools\Loader;
+use WP_Error;
 
 class ShippingMethodsController extends Controller {
 
@@ -107,25 +108,67 @@ class ShippingMethodsController extends Controller {
 		$oShippingData = json_decode(stripslashes_deep($_POST['woocommerce_shipmondo_hidden_post_field']));
 		if(isset($oShippingData->iInstance_id))
 		{
-
 			$iInstance_id = $oShippingData->iInstance_id;
 			$sRangeType = $oShippingData->sRangeType;
+
+            $optionName = static::getPriceRangesOptionName($sRangeType, $iInstance_id);
+
+            if(is_wp_error($optionName)) {
+                return;
+            }
+
 			$oShippingRangeRow = json_decode($oShippingData->oShippingRows)->oRows;
-			update_option($sRangeType . '_' . $iInstance_id, $oShippingRangeRow);
+			update_option($optionName, $oShippingRangeRow);
 		}
 	}
 
 
 	public static function getPriceRanges() {
-		$iInstance_id = (!empty($_POST['iInstance_id']) ? $_POST['iInstance_id'] : '');
-		$sRangeType = (!empty($_POST['sRangeType']) ? $_POST['sRangeType'] : '');
+        if(!wp_verify_nonce($_POST['nonce'], 'shipmondo_get_price_ranges') || !current_user_can('manage_options')) {
+            $response['status'] = "error";
+            $response['message'] = __("You don't have permission to do this", 'pakkelabels-for-woocommerce');
+            echo json_encode($response);
+            wp_die();
+        }
 
+        $iInstance_id = (!empty($_POST['iInstance_id']) ? $_POST['iInstance_id'] : '');
+        $sRangeType = (!empty($_POST['sRangeType']) ? $_POST['sRangeType'] : '');
 
-		$response['oData'] = get_option($sRangeType . '_' . $iInstance_id);
+        $optionName = static::getPriceRangesOptionName($sRangeType, $iInstance_id);
+
+		if(is_wp_error($optionName)) {
+            $response['status'] = "error";
+            $response['message'] = $optionName->get_error_message();
+            echo json_encode($response);
+            wp_die();
+        }
+
+        $data = get_option($optionName);
+
+        if($data === false) {
+            $response['status'] = "error";
+            $response['message'] = __("No data found", 'pakkelabels-for-woocommerce');
+            echo json_encode($response);
+            wp_die();
+        }
+
+		$response['oData'] = $data;
 		$response['status'] = "success";
 		echo json_encode($response);
 		wp_die();
 	}
+
+    protected static function getPriceRangesOptionName($sRangeType, $iInstance_id) {
+        if(!in_array($sRangeType, array('Weight', 'Price', 'Quantity'))) {
+            return new WP_Error('invalid_range_type', __('Invalid Range Type', 'pakkelabels-for-woocommerce')); // Invalid range type
+        }
+
+        if(!is_numeric($iInstance_id)) {
+            return new WP_Error('invalid_instance_id', __('Invalid Instance ID', 'pakkelabels-for-woocommerce')); // Invalid instance id
+        }
+
+        return $sRangeType . '_' . $iInstance_id;
+    }
 
 	/**
 	 * Get chosen Shipping method instance for package

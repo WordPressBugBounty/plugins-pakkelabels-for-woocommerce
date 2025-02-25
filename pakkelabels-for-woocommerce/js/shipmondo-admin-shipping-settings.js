@@ -102,7 +102,8 @@ if (typeof ShipmondoAdminParams !== 'undefined') {
 			var aShippingData = {
 				'action': 'shipmondo_get_price_ranges',
 				'iInstance_id': jQuery.urlParam('instance_id'),
-				'sRangeType' : sRangeType
+				'sRangeType' : sRangeType,
+				'nonce' : jQuery('.differentiated_price_type').data('nonce')
 			};
 			jQuery.post(ajax_admin_url, aShippingData, function(response)
 			{
@@ -168,7 +169,8 @@ if (typeof ShipmondoAdminParams !== 'undefined') {
 				var aShippingData = {
 					'action': 'shipmondo_get_price_ranges',
 					'iInstance_id': jQuery.urlParam('instance_id'),
-					'sRangeType' : sRangeType
+					'sRangeType' : sRangeType,
+					'nonce' : jQuery('.differentiated_price_type').data('nonce')
 				};
 
 

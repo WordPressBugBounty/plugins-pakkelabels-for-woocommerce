@@ -5,8 +5,8 @@ Plugin URI: https://shipmondo.com
 Tags: Shipmondo, shipping, GLS, PostNord, Bring, DAO365, Pakkeshop, fragt, woocommerce, pakkelabels, fragtmodul
 Requires at least: 6.2
 Requires PHP: 7.4
-Tested up to: 6.5
-Stable tag: 5.0.3
+Tested up to: 6.7
+Stable tag: 5.0.4
 License: Shipmondo
 License URI: https://shipmondo.com
 
@@ -111,6 +111,10 @@ Note! Requires at least WooCommerce 3.0.0.
 
 
 == Changelog ==
+
+= 5.0.4 =
+* Fix error in scripts, causing error to be thrown in the developer console in some cases
+* Fix error in WooCommerce Blocks implementation, if shipping package does not contain a valid shipping method
 
 = 5.0.3 =
 * Fix error in WooCommerce Blocks implementation, if shipping methods does not contain a service point

@@ -80,25 +80,6 @@ jQuery(document).ready(function($) {
         setShopHTML(index, shop, shopElement)
     }
 
-    // DROPDOWN
-    $(document).on('click', '.selected_service_point.selector_type-dropdown', function(e) {
-        e.stopPropagation()
-        toggleDropdown(getDropdown($(this)))
-    })
-
-    function getDropdown(element) {
-        return getWrapper(element).find('.shipmondo-dropdown')
-    }
-
-    function toggleDropdown(dropdown) {
-        if(dropdown.hasClass('open')) {
-            closeDropdown(modal)
-        } else {
-            openDropdown(modal)
-        }
-    }
-
-
     // MODAL
 
     // Show modal
@@ -253,9 +234,9 @@ jQuery(document).ready(function($) {
     // DROPDOWN
     // Open dropdown
     $(document).on('click', '.shipmondo-original .selected_service_point.selector_type-dropdown', function(e) {
-        e.stopPropagation();
-        toogleDropdown($(this))
-    });
+        e.stopPropagation()
+        toggleDropdown($(this))
+    })
 
     function getDropdown(element) {
         return getWrapper(element).find('.shipmondo-dropdown_wrapper');

@@ -3,15 +3,15 @@
  * Plugin Name: Shipmondo for WooCommerce
  * Plugin URI: https://shipmondo.com
  * Description: Shipping for WooCommerce. Choose from over 40 carriers, such as Bring, DHL, GLS, and PostNord.
- * Version: 5.0.3
+ * Version: 5.0.4
  * Text Domain: pakkelabels-for-woocommerce
  * Domain Path: /languages
  * Author: Shipmondo
  * Author URI: https://shipmondo.com
  * Requires at least: 6.2
- * Tested up to: 6.6
+ * Tested up to: 6.7
  * WC requires at least: 8.0
- * WC tested up to: 9.2
+ * WC tested up to: 9.6
  */
 
 

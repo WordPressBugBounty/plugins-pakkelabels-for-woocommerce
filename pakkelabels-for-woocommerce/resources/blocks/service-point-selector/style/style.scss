@@ -1,3 +1,7 @@
+@use "./selectors/_dropdown.scss";
+
+@use "./selectors/_modal.scss";
+
 .shipmondo_service_point_selection {
 	h3.service_point_title {
 		font-size: 1.1em;
@@ -120,10 +124,6 @@
 			}
 		}
 	}
-
-	@import "./selectors/_dropdown.scss";
-
-	@import "./selectors/_modal.scss";
 }
 
 body.shipmondo_modal_open {

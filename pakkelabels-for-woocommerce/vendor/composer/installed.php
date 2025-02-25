@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'name' => 'shipmondo/shipmondo-for-woocommerce',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '92acbdfb9f08f4c87d24cc763a5ae5039ec4fc67',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => true,
+        'reference' => '4099ecb8170bcbbd30bd162ec98cd7e916e08abc',
+        'name' => 'shipmondo/shipmondo-for-woocommerce',
+        'dev' => false,
     ),
     'versions' => array(
         'shipmondo/shipmondo-for-woocommerce' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '92acbdfb9f08f4c87d24cc763a5ae5039ec4fc67',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+            'reference' => '4099ecb8170bcbbd30bd162ec98cd7e916e08abc',
             'dev_requirement' => false,
         ),
     ),

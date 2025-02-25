@@ -12,11 +12,20 @@ export default function ServicePointSelector({shippingPackage, checkoutExtension
     // Get selected shipping rate
     const selectedRate = shippingPackage.shipping_rates.find((rate) => rate.selected)
 
+    if(!selectedRate) {
+        return null
+    }
+
     // Check if selected shipping rate is a service point delivery
     const isServicePointDelivery = selectedRate.method_id === 'shipmondo' && typeof selectedRate.meta_data.find((e) => e.key === 'is_service_point_delivery' && e.value) !== 'undefined'
 
     // Get shipping agent
     const agent = selectedRate.meta_data.find((e) => e.key === 'shipping_agent')?.value ?? null
+
+    // if not service point delivery or no agent, return null
+    if (!isServicePointDelivery || !agent) {
+        return null
+    }
 
     // List of available service points based on the shipping agent and the shipping address
     const [servicePoints, setServicePoints] = useState([])
@@ -147,11 +156,6 @@ export default function ServicePointSelector({shippingPackage, checkoutExtension
     }, [servicePoint])
 
     const settings = getSetting('shipmondo-service-point-selector_data')
-
-    // if not service point delivery or no agent, return null
-    if (!isServicePointDelivery || !agent) {
-        return null
-    }
 
     const selectorType = settings.selector_type ?? 'dropdown'
 

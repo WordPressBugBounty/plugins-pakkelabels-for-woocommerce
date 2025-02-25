@@ -123,6 +123,9 @@ class Shipmondo extends \WC_Shipping_Method {
 					'Weight' 	    => __( 'Weight', 'pakkelabels-for-woocommerce'),
 					'Price' 	    => __( 'Price', 'pakkelabels-for-woocommerce'),
 				),
+                'custom_attributes' => array(
+                    'data-nonce' => wp_create_nonce('shipmondo_get_price_ranges'),
+                )
 			),
 			'shipping_price' => array(
 				'title' 		=> __( 'Shipping Price', 'pakkelabels-for-woocommerce'),
