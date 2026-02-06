@@ -1,4 +1,4 @@
-=== Shipmondo - A complete shipping solution for WooCommerce ===
+=== DEPRECATED - Shipmondo - A complete shipping solution for WooCommerce ===
 
 Contributors: pakkelabels
 Plugin URI: https://shipmondo.com
@@ -6,7 +6,7 @@ Tags: Shipmondo, shipping, GLS, PostNord, Bring, DAO365, Pakkeshop, fragt, wooco
 Requires at least: 6.2
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 5.0.4
+Stable tag: 5.0.8
 License: Shipmondo
 License URI: https://shipmondo.com
 
@@ -14,6 +14,9 @@ Shipmondo for WooCommerce – Provide pick-up points in checkout and manage ship
 
 
 == Description ==
+**Important:** This plugin is now deprecated and will no longer be supported. To get access to new features, you should migrate to our new plugin.
+
+The new plugin can be found here: [https://wordpress.org/plugins/shipmondo-for-woocommerce/](https://wordpress.org/plugins/shipmondo-for-woocommerce/) and the migration guide [here](https://help.shipmondo.com/en/articles/13514947-woocommerce-migration-guide-to-the-new-delivery-checkout)
 
 https://www.youtube.com/watch?v=jLjlPbCr-WI
 
@@ -111,6 +114,12 @@ Note! Requires at least WooCommerce 3.0.0.
 
 
 == Changelog ==
+
+= 5.0.6 =
+* Changed the name
+
+= 5.0.5 =
+* Fixes a deprecation warning for tax calculation
 
 = 5.0.4 =
 * Fix error in scripts, causing error to be thrown in the developer console in some cases

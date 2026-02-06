@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: Shipmondo for WooCommerce
+ * Plugin Name: DEPRECATED - Shipmondo Shipping for WooCommerce
  * Plugin URI: https://shipmondo.com
  * Description: Shipping for WooCommerce. Choose from over 40 carriers, such as Bring, DHL, GLS, and PostNord.
- * Version: 5.0.4
+ * Version: 5.0.8
  * Text Domain: pakkelabels-for-woocommerce
  * Domain Path: /languages
  * Author: Shipmondo

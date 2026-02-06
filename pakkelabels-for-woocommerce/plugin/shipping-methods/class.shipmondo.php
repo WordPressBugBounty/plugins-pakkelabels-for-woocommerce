@@ -570,7 +570,7 @@ class Shipmondo extends \WC_Shipping_Method {
 		if(is_null($this->cart_total)) {
 			$cart = $GLOBALS['woocommerce']->cart;
 
-			$taxes = LegacyController::getWooCommerceVersion() < '3.2.0' ? $cart->taxes : $cart->get_cart_contents_taxes();
+			$taxes = LegacyController::checkWooCommerceVersion('3.2.0') ? $cart->get_cart_contents_taxes() : $cart->taxes;
 
 			if(wc_tax_enabled()) {
 				$this->cart_total = $cart->cart_contents_total + array_sum($taxes);
